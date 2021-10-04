@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const key = require("./config/db");
 
 const app = express();
+require('dotenv').config()
+
 const router = require('./routes/router');
 
 app.use(express.urlencoded({ extended: false }));
@@ -31,13 +33,23 @@ app.get(/.*/, function (req, res) {
 	res.sendFile(path.join(__dirname, '/dist/index.html'))
 })
 
+if  (process.env.NODE_ENV === "production") {
 mongoose.connect(
-    key.DB,
+    process.env.DB,
     { useNewUrlParser: true, useUnifiedTopology: true },
     () => {
       console.log("connected to mongodb");
     }
   );
+  }else{
+    mongoose.connect(
+      key.DB,
+      { useNewUrlParser: true, useUnifiedTopology: true },
+      () => {
+        console.log("connected to mongodb");
+      }
+    ); 
+  }
 
 const port = process.env.PORT || 8000
 
