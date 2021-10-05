@@ -32,7 +32,7 @@ export default {
   },
   methods: {
       addItem() {
-           let uri = 'http://localhost:8000/item';
+           let uri = 'http://localhost:8000/item'||'/item';
            console.log(this.item)
             this.axios.post(uri, this.item).then((response) => {
                 console.log(response.data)
