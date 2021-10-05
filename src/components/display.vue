@@ -42,7 +42,7 @@
         methods: {
             fetchItems()
             {
-              let uri = 'http://localhost:8000/items';
+              let uri = '/items';
               this.axios.get(uri).then((response) => {
                   this.items = response.data;
               });
