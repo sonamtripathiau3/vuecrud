@@ -37,7 +37,7 @@ export default{
         methods: {
             getItem()
             {
-              let uri = 'http://localhost:8000/item/' + this.$route.params.id;
+              let uri = '/item/' + this.$route.params.id;
                 this.axios.get(uri).then((response) => {
                     this.item = response.data;
                 });
@@ -45,7 +45,7 @@ export default{
 
             updateItem()
             {
-              let uri = 'http://localhost:8000/item/' + this.$route.params.id;
+              let uri = '/item/' + this.$route.params.id;
                 this.axios.put(uri, this.item).then((response) => {
                     console.log(response)
                   this.$router.push({name: 'Display'});

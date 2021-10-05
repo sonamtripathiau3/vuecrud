@@ -50,7 +50,7 @@
             deleteItem(id)
             {
                 console.log(id)
-              let uri = 'http://localhost:8000/item/'+id;
+              let uri = '/item/'+id;
               this.items.splice(id, 1);
               this.axios.delete(uri);
             //   window.location.replace("/display")
