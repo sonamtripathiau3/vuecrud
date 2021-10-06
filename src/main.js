@@ -20,6 +20,7 @@ myapp.use(VueAxios, axios);
 myapp.config.productionTip = false
 
 const routes = [
+  { path: '/', redirect: { name: 'Display' }},
     {
       name: 'Create',
       path: '/create',
