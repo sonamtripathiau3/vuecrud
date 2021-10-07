@@ -8,6 +8,7 @@ import App from './App.vue'
 import AddItem from './components/create.vue';
 import Edit from './components/edit.vue';
 import Display from './components/display.vue';
+import Index from "./components/index.vue";
 
 import '../node_modules/nprogress/nprogress.css';
 
@@ -20,7 +21,9 @@ myapp.use(VueAxios, axios);
 myapp.config.productionTip = false
 
 const routes = [
-  { path: '/', redirect: { name: 'Display' }},
+  { path: '/',   name: 'Index',
+      component:Index
+   },
     {
       name: 'Create',
       path: '/create',
