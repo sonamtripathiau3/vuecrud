@@ -1,6 +1,7 @@
 <template>
-<div class="container justify-content-center">
-  <h3>Users:</h3>
+<div class="row">
+<div class="col container">
+  <h3 class="head text-center">Users are listed below</h3>
   <table class="table">
       <thead>
         <tr>
@@ -19,6 +20,7 @@
         </tr>
       </tbody>
     </table>
+    </div> 
     </div> 
 </template>
 
@@ -45,7 +47,11 @@ import axios from "axios";
   h3 {
     margin-bottom: 5%;
   }
-  /* .table {
-    margin-left: 400px;
-  } */
+  table {
+    background-image: url("https://img.freepik.com/free-vector/abstract-trendy-black-line-pattern-decoration-background_121035-76.jpg?size=626&ext=jpg");
+    border: 5px solid black;
+}
+.head{
+  color: brown;
+}
 </style>

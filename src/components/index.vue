@@ -1,10 +1,12 @@
  <template>  
-    <div class="container mt-5">
+    <div class="d-flex justify-content-center mt-5">
       <h6>To view users please click on Users Button</h6>
-      <button class="btn btn-success" v-on:click="users" > Users</button>
-       <div class="mt-5" v-if="message=='users'">
-      <Users />
     </div>
+      <div class="d-flex justify-content-center mt-2">
+        <button class="btn btn-success btn-lg btn-block" v-on:click="users" > Users</button>
+      </div>
+    <div class="mt-5" v-if="message=='users'">
+      <Users />
     </div>
 </template>
 

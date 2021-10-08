@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container mt-5">
         <h1>Items</h1>
 
         <table class="table table-hover">
