@@ -18,7 +18,7 @@
                         <span><img src="https://img.icons8.com/color/48/000000/send-mass-email.png" /></span>
                         &nbsp; Email us
                     </p>
-                    <p class="pl-5" style="color:darkorchid">Drop Email at:<br />support@parcelninja.com</p>
+                    <p class="pl-5" style="color:darkorchid">Drop Email at:<br />support@welcome.com</p>
                 </div>
                 <div class="col">
                     <p style="color:darkorchid">
@@ -44,7 +44,7 @@
         <div class="container">
             <hr style="border: 1px solid white;" />
             <h5 class="text-center pb-3" style="color:darkorchid">
-                © 2019 Parcelninja All Rights Reserved
+                © 2021 Welcome All Rights Reserved
             </h5>
         </div>
         </div>
