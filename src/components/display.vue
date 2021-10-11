@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-5">
+    <div class="container mt-5 mr-4">
         <h1>Items</h1>
 
         <table class="table table-hover">
@@ -42,15 +42,25 @@
         methods: {
             fetchItems()
             {
-              let uri = '/items';
+                let uri
+                if(process.ENV==="production"){
+                    uri = '/items';
+                }else{
+                    uri="http://localhost:8000/items"
+                }
+              
               this.axios.get(uri).then((response) => {
                   this.items = response.data;
               });
             },
             deleteItem(id)
-            {
+            {   let uri
                 console.log(id)
-              let uri = '/item/'+id;
+            if(process.ENV==="production"){
+              uri = '/item/'+id;
+            }else{
+                uri="http://localhost:8000/item/"+id
+            }
               this.items.splice(id, 1);
               this.axios.delete(uri);
             //   window.location.replace("/display")

@@ -3,12 +3,15 @@
     <div>
       <Navbar/>
       </div>
+        <div class="row">
+        <Sidebar/>
     <div class="container">
       <transition name="fade">
         <div class="gap">
           <router-view></router-view>
         </div>
       </transition>
+    </div>
     </div>
     <div>
     <Footer/>
@@ -19,10 +22,12 @@
 <script>
 import Footer from "./components/footer.vue"
 import Navbar from "./components/navbar.vue"
+import Sidebar from "./components/sidebar.vue"
 export default {
   components:{
     Footer,
-    Navbar
+    Navbar,
+    Sidebar
   }
 };
 </script>

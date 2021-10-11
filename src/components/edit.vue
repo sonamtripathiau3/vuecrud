@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
         <div class="card">
             <div class="card-header">
                 <h3>Edit Item</h3>
@@ -37,7 +37,12 @@ export default{
         methods: {
             getItem()
             {
-              let uri = '/item/' + this.$route.params.id;
+                 let uri
+                if(process.ENV==="production"){
+                    uri = '/item/'+ this.$route.params.id;
+                }else{
+                    uri="http://localhost:8000/item/"+ this.$route.params.id;
+                }
                 this.axios.get(uri).then((response) => {
                     this.item = response.data;
                 });
@@ -45,7 +50,12 @@ export default{
 
             updateItem()
             {
-              let uri = '/item/' + this.$route.params.id;
+               let uri
+                if(process.ENV==="production"){
+                    uri = '/item/'+ this.$route.params.id;
+                }else{
+                    uri="http://localhost:8000/item/"+ this.$route.params.id;
+                }
                 this.axios.put(uri, this.item).then((response) => {
                     console.log(response)
                   this.$router.push({name: 'Display'});

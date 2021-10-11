@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-5">
+    <div class="container col-7 md-10 mt-5">
         <div class="card">
             <div class="card-header">
                 <h3>Add Item</h3>
@@ -32,7 +32,12 @@ export default {
   },
   methods: {
       addItem() {
-           let uri = '/item';
+          let uri
+            if(process.env.NODE_ENV==="production"){
+                    uri = '/items';
+                }else{
+                    uri="http://localhost:8000/item"
+                }
            console.log(this.item)
             this.axios.post(uri, this.item).then((response) => {
                 console.log(response.data)
