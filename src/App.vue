@@ -5,7 +5,7 @@
       </div>
         <div class="row">
         <Sidebar/>
-    <div class="container">
+    <div class="col md-10 container">
       <transition name="fade">
         <div class="gap">
           <router-view></router-view>
