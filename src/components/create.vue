@@ -34,7 +34,7 @@ export default {
       addItem() {
           let uri
             if(process.env.NODE_ENV==="production"){
-                    uri = '/items';
+                    uri = '/item';
                 }else{
                     uri="http://localhost:8000/item"
                 }
