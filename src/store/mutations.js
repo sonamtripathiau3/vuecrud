@@ -1,6 +1,12 @@
 export default {
-    addUser(state, users) {
-        state.users=users
-        console.log(state.users)
+    addUser(state, payload) {
+        console.log("hello",payload)
+        state.users=payload
+},
+    deleteUser(state,id){
+        console.log("id",id)
+        state.users = state.users.filter((user) => {
+            return user.id!=id;
+        });
 }
 }

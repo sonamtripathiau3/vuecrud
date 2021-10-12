@@ -4,7 +4,7 @@ import * as actions from './actions'
 import mutations from './mutations'
 
 const state = {
-users:null
+users:[]
 }
 
 export default createStore({

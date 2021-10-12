@@ -17,6 +17,7 @@
           <td>{{user.name}}</td>
           <td>{{user.email}}</td>
           <td>{{user.address.city}}</td>
+          <td><button class="btn btn-danger" @click="deleteUser(user.id)">Delete</button></td>
         </tr>
       </tbody>
     </table>
@@ -25,35 +26,21 @@
 </template>
 
 <script>
-import axios from "axios";
-// import {useStore} from "vuex";
-// import {computed} from "vue";
-// const store = useStore()
+import {mapGetters} from "vuex";
 export default {
     name: 'Users',
-    data() {
-      return {
-        users:null,
-      };
-    },
-    created: function(){
-    axios.get('https://jsonplaceholder.typicode.com/users')
-        .then(res => {
-          this.users = res.data;
-          console.log(res.data)
-        })
-    },
-    //   created: function(){
-    //       console.log("hello")
-    //       store.dispatch("loadUsers")
-    //     },
-    // setup(){
-    //   const store = useStore()
-    //   const users = computed(()=>store.getters.allUsers)
-    //   return{
-    //    users
-    //   }
-    // }
+  computed: {
+    ...mapGetters(['users']),
+  },
+  mounted() {
+    this.$store.dispatch('loadUsers'); 
+  },
+  methods:{
+    deleteUser(id){
+      console.log(id)
+      this.$store.dispatch('deleteUser',id)
+    }
+  }
 }
 </script>
 <style>
