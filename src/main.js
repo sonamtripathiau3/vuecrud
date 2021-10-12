@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createWebHistory, createRouter } from 'vue-router';
+import store from "./store/index"
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import NProgress from 'nprogress';
@@ -57,4 +58,4 @@ const routes = [
     NProgress.done()
   });
 
-myapp.use(router).mount('#app')
+myapp.use(router).use(store).mount('#app')
