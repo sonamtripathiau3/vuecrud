@@ -61,7 +61,9 @@
             }else{
                 uri="http://localhost:8000/item/"+id
             }
-              this.items.splice(id, 1);
+              this. items=this.items.filter(item=>{
+                  return item._id!=id
+              });
               this.axios.delete(uri);
             //   window.location.replace("/display")
             }
