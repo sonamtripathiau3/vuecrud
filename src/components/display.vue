@@ -43,7 +43,7 @@
             fetchItems()
             {
                 let uri
-                if(process.ENV==="production"){
+                if(process.env.NODE_ENV==="production"){
                     uri = '/items';
                 }else{
                     uri="http://localhost:8000/items"
@@ -56,7 +56,7 @@
             deleteItem(id)
             {   let uri
                 console.log(id)
-            if(process.ENV==="production"){
+            if(process.env.NODE_ENV==="production"){
               uri = '/item/'+id;
             }else{
                 uri="http://localhost:8000/item/"+id
