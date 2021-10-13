@@ -3,7 +3,7 @@
  <div class="card" style="width:1600 px">
             <h6><strong>Manage my  connections</strong></h6>
             <ul class="list-group list-group-flush">
-    <li class="list-group-item">Users<span class="li ml-auto" > {{userlength}} </span></li>
+    <li class="list-group-item"> Users <span class="li ml-auto" > {{userlength}} </span></li>
                 <li class="list-group-item">Team Mates <span class="li ml-auto">13</span></li>
                 <li class="list-group-item">Contacts <span class="li ml-auto" >8</span></li>
                 <li class="list-group-item">People I follow <span class="li ml-auto" >7</span></li>
