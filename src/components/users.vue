@@ -34,7 +34,7 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+       <p>Please click confirm to Delete Users else close </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
