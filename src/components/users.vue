@@ -23,8 +23,8 @@
     </table>
     <div class="container">
       <div class="row">
-      <button type="button" class="col btn btn-success mr-2" v-if="status==true" @click="prev()">Previous</button>
-      <button type="button" class="col btn btn-success" @click="next()">Next</button>
+      <button type="button" class="col btn btn-success mr-2" v-if="count>1" @click="prev()">Previous</button>
+      <button type="button" class="col btn btn-success" :disabled="isActive" @click="next()">Next</button>
       </div>
     </div>
     </div> 
@@ -58,19 +58,21 @@ export default {
   data () {
      return {
        id:null,
-       showModal:false,
        count:1,
-       status:false
+       length:0,
+       isActive:false
        }
   },
   //  props:[
   //   'id'
   // ],
   computed: {
-    ...mapGetters(['users']),
+    ...mapGetters(['users','userLength']),
   },
-  mounted() {
-    this.$store.dispatch('loadUsers',1); 
+  async mounted() {
+    await this.$store.dispatch('loadUsers',1); 
+    this.length=this.length+this.users.length
+    console.log("length",this.length)
   },
   methods:{
     deleteUser(userid){
@@ -79,20 +81,23 @@ export default {
     },
     modal(newId){
       this.id=newId
-      this.showModal=true
-      console.log(this.showModal)
       return this.id 
     },
-    next(){
+    async next(){
       this.count++
       console.log("count",this.count)
-      this.$store.dispatch('loadUsers',this.count);
-      this.status=true
+      await this.$store.dispatch('loadUsers',this.count);
+      this.length=this.count*5
+      if(this.length===this.userLength){
+        this.isActive=true
+      }
     },
-    prev(){
+    async prev(){
       this.count--
       console.log("count",this.count)
-      this.$store.dispatch('loadUsers',this.count);
+      await this.$store.dispatch('loadUsers',this.count);
+      this.length=this.count*5;
+      this.isActive=false
     }
   }
 }

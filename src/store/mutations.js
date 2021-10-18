@@ -1,7 +1,8 @@
 export default {
     addUser(state, payload) {
-        console.log("hello",payload)
-        console.log(payload.data)
+        console.log("data",payload.data.length)
+        state.userLength=payload.data.length
+        console.log(state.userLength)
         let skip =5*(payload.payload-1)
         console.log(skip)
         let limit = skip+5;
