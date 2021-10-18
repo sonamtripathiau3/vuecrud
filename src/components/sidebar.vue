@@ -1,15 +1,12 @@
 <template>
 <div class="sidebar col-3 ml-3 mt-5">
- <div class="card" style="width:1600 px">
-            <h6><strong>Manage my  connections</strong></h6>
+ <div class="card" style="width:1600 px ">
+            <div class="text-center mt-2 mb-2"><strong>All Links</strong></div>
             <ul class="list-group list-group-flush">
-    <li class="list-group-item"> Users <span class="li ml-auto" > {{userlength}} </span></li>
-                <li class="list-group-item">Team Mates <span class="li ml-auto">13</span></li>
-                <li class="list-group-item">Contacts <span class="li ml-auto" >8</span></li>
-                <li class="list-group-item">People I follow <span class="li ml-auto" >7</span></li>
-                <li class="list-group-item">Groups <span class="li ml-auto">13</span></li>
-                <li class="list-group-item">Pages <span class="li ml-auto" >5</span></li>
-                <li class="list-group-item">Hashtags <span class="li ml-auto">23</span></li>
+    <router-link :to="{ name: 'Index' }" class="route"><li class="link list-group-item">Home</li></router-link>
+              <li class="link list-group-item"> Users <span class=" li ml-auto" > {{userlength}} </span></li>
+    <router-link :to="{ name: 'Create' }" class="route"><li class="link list-group-item">Add Item</li></router-link>
+    <router-link :to="{ name: 'Display' }" class="route"><li class="link list-group-item">All Items</li></router-link>
             </ul>
       </div>
     </div>   
@@ -24,12 +21,24 @@ name:"Sidebar" ,
 }
 </script>
 <style>
+
 li{
     position:absolute;
-    right:20
+    right:20;
+    color:whitesmoke;
 }
 .sidebar{
     margin-left:2px;
 }
+.link{
+  background-color: palevioletred;
+}
+.link:hover{
+  background-color: violet;
+}
+.route{
+  text-decoration:none !important
+}
+
 </style>
 
