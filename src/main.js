@@ -10,6 +10,7 @@ import AddItem from './components/create.vue';
 import Edit from './components/edit.vue';
 import Display from './components/display.vue';
 import Index from "./components/index.vue";
+import Users from "./components/users.vue"
 
 import '../node_modules/nprogress/nprogress.css';
 
@@ -29,6 +30,11 @@ const routes = [
       name: 'Create',
       path: '/create',
       component: AddItem
+    },
+    {
+      name: 'Users',
+      path: '/users',
+      component: Users
     },
     {
       name: 'Edit',

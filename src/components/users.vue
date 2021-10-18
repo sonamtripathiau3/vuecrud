@@ -21,6 +21,12 @@
         </tr>
       </tbody>
     </table>
+    <div class="container">
+      <div class="row">
+      <button type="button" class="col btn btn-success mr-2" v-if="status==true" @click="prev()">Previous</button>
+      <button type="button" class="col btn btn-success" @click="next()">Next</button>
+      </div>
+    </div>
     </div> 
     </div> 
   <!-- Modal -->
@@ -52,7 +58,9 @@ export default {
   data () {
      return {
        id:null,
-       showModal:false
+       showModal:false,
+       count:1,
+       status:false
        }
   },
   //  props:[
@@ -62,7 +70,7 @@ export default {
     ...mapGetters(['users']),
   },
   mounted() {
-    this.$store.dispatch('loadUsers'); 
+    this.$store.dispatch('loadUsers',1); 
   },
   methods:{
     deleteUser(userid){
@@ -73,8 +81,18 @@ export default {
       this.id=newId
       this.showModal=true
       console.log(this.showModal)
-      return this.id
-        
+      return this.id 
+    },
+    next(){
+      this.count++
+      console.log("count",this.count)
+      this.$store.dispatch('loadUsers',this.count);
+      this.status=true
+    },
+    prev(){
+      this.count--
+      console.log("count",this.count)
+      this.$store.dispatch('loadUsers',this.count);
     }
   }
 }

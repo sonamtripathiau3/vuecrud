@@ -4,7 +4,7 @@
             <div class="text-center mt-2 mb-2"><strong>All Links</strong></div>
             <ul class="list-group list-group-flush">
     <router-link :to="{ name: 'Index' }" class="route"><li class="link list-group-item">Home</li></router-link>
-              <li class="link list-group-item"> Users <span class=" li ml-auto" > {{userlength}} </span></li>
+    <router-link :to="{ name: 'Users' }" class="route"><li class="link list-group-item"> Users <span class=" li ml-auto" > {{userlength}} </span></li></router-link>
     <router-link :to="{ name: 'Create' }" class="route"><li class="link list-group-item">Add Item</li></router-link>
     <router-link :to="{ name: 'Display' }" class="route"><li class="link list-group-item">All Items</li></router-link>
             </ul>
