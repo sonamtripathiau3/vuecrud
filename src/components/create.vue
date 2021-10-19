@@ -43,7 +43,7 @@ export default {
        await this.axios.post(uri, this.item).then((response) => {
         console.log(response.data);
          Swal.fire({
-        position: "top-end",
+        position: "center",
         icon: "success",
         title: response.data.item,
         showConfirmButton: false,
@@ -54,7 +54,12 @@ export default {
      
       this.item = {};
       // window.location.replace("/create")
-      this.$router.push({ name: "Display" });
+    
+      setTimeout(function () {
+            console.log('boo')
+            window.location.replace("/display")
+            //  this.$router.push({ name: "Display" });
+        }, 1000)
     },
   },
 };
