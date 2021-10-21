@@ -18,24 +18,43 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto mb-2 mb-lg-0">
-        <a class="anchor nav-link" href="/"
+          <span v-if="!isLoggedin">
+          <a class="anchor nav-link"
+          ><Login/></a>
+          </span>
+          <span v-if="!isLoggedin">
+          <a class="anchor nav-link"
+          ><Register/></a>
+          </span>
+          <div  class="row" v-else>
+          <a class="anchor nav-link" href="/"
           >Home</a>
-        <router-link :to="{ name: 'Create' }" class="anchor nav-link"
-          >Add Item</router-link
-        >
+          <router-link :to="{ name: 'Create' }" class="anchor nav-link"
+          >Add Item</router-link>
         <router-link :to="{ name: 'Display' }" class="anchor nav-link"
           >All Items</router-link>
-        <a class="nav-link">
+      <a class="nav-link">
         <img id="avatar" src="https://static.toiimg.com/thumb/resizemode-4,msid-76729750,imgsize-249247,width-720/76729750.jpg" class="rounded-circle border border-5"
         alt="user" />
       </a>
+      </div>
     </div>
   </div>
 </nav>
 </template>
 <script>
+import Login from "./login.vue"
+import Register from "./register.vue"
+import {mapState} from "vuex"
 export default {
   name: "Navbar",
+  components:{
+    Login,
+    Register
+  },
+  computed: {
+    ...mapState(['isLoggedin']),
+  },
 };
 </script>
 <style>

@@ -11,7 +11,7 @@ import Edit from './components/edit.vue';
 import Display from './components/display.vue';
 import Index from "./components/index.vue";
 import Users from "./components/users.vue"
-
+import Login from "./components/login.vue"
 import '../node_modules/nprogress/nprogress.css';
 
 const myapp= createApp(App)
@@ -26,6 +26,11 @@ const routes = [
   { path: '/',   name: 'Index',
       component:Index
    },
+   {
+    name: 'Login',
+    path: '/login',
+    component: Login
+    },
     {
       name: 'Create',
       path: '/create',

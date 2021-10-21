@@ -5,7 +5,8 @@ import mutations from './mutations'
 
 const state = {
 users:[],
-userLength:null
+userLength:null,
+isLoggedin:false,
 }
 
 export default createStore({

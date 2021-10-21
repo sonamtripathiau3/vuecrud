@@ -17,7 +17,7 @@
           <td>{{user.name}}</td>
           <td>{{user.email}}</td>
           <td>{{user.address.city}}</td>
-          <td><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" @click="modal(user.id)">Delete</button></td>
+          <td><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal1" @click="modal(user.id)">Delete</button></td>
         </tr>
       </tbody>
     </table>
@@ -30,8 +30,8 @@
     </div> 
     </div> 
   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
@@ -63,9 +63,6 @@ export default {
        isActive:false
        }
   },
-  //  props:[
-  //   'id'
-  // ],
   computed: {
     ...mapGetters(['users','userLength']),
   },

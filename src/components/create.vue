@@ -49,12 +49,10 @@ export default {
         showConfirmButton: false,
         timer: 1500,
         });
-        return response.data.item;
       });
      
       this.item = {};
       // window.location.replace("/create")
-    
       setTimeout(function () {
             console.log('boo')
             window.location.replace("/display")
