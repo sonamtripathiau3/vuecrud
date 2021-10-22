@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex"
 import Footer from "./components/footer.vue"
 import Navbar from "./components/navbar.vue"
 import Sidebar from "./components/sidebar.vue"
@@ -45,7 +46,10 @@ export default {
     Sidebar,
     Login,
     Register
-  }
+  },
+    computed: {
+    ...mapGetters(['isLoggedin']),
+  },
 };
 </script>
 <style>

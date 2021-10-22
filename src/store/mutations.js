@@ -17,5 +17,9 @@ export default {
         state.users = state.users.filter((user) => {
             return user.id!=id;
         });
-}
+},
+    auth(state, status){
+        console.log(status)
+        state.isLoggedin=status
+    }
 }

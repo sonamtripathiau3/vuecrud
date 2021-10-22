@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-5 mr-4">
-        <h1>Items</h1>
+        <h1 style="color:white">Items</h1>
 
         <table class="table table-hover">
             <thead>

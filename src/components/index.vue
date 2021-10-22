@@ -1,7 +1,7 @@
  <template>  
  <div class=" container col-7">
     <div class="mt-5">
-      <h6>To view users please click on Users Button</h6>
+      <h6 style="color:white">To view users please click on Users Button</h6>
     </div>
       <div class="mt-2">
         <button class="btn btn-success btn-lg btn-block" v-on:click="users" > Users</button>

@@ -11,7 +11,7 @@
       />
     </a>
    <a class="navbar-brand" href="/" id="brand">
-      <h2 style="color: white">Welcome</h2>
+      <h2 style="color: white" v-if="!isLoggedin">Welcome</h2>
     </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -27,16 +27,27 @@
           ><Register/></a>
           </span>
           <div  class="row" v-else>
-          <a class="anchor nav-link" href="/"
-          >Home</a>
+          <router-link :to="{ name: 'Index' }" class="anchor nav-link">Home</router-link>
           <router-link :to="{ name: 'Create' }" class="anchor nav-link"
           >Add Item</router-link>
         <router-link :to="{ name: 'Display' }" class="anchor nav-link"
           >All Items</router-link>
-      <a class="nav-link">
-        <img id="avatar" src="https://static.toiimg.com/thumb/resizemode-4,msid-76729750,imgsize-249247,width-720/76729750.jpg" class="rounded-circle border border-5"
-        alt="user" />
-      </a>
+      <button class="navbar-toggler dropleft" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  </button>
+  <div class="collapse navbar-collapse" id="navbar-list-4">
+    <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="https://static.toiimg.com/thumb/resizemode-4,msid-76729750,imgsize-249247,width-720/76729750.jpg" width="40" height="40" class="rounded-circle">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <router-link :to="{ name: 'Index' }" class="dropdown-item">Dashboard</router-link>
+          <a class="dropdown-item" href="#">Edit Profile</a>
+          <a class="dropdown-item" @click="logout()">Log Out</a>
+        </div>
+      </li>   
+    </ul>
+  </div>
       </div>
     </div>
   </div>
@@ -45,7 +56,7 @@
 <script>
 import Login from "./login.vue"
 import Register from "./register.vue"
-import {mapState} from "vuex"
+import {mapGetters} from "vuex"
 export default {
   name: "Navbar",
   components:{
@@ -53,14 +64,21 @@ export default {
     Register
   },
   computed: {
-    ...mapState(['isLoggedin']),
+    ...mapGetters(['isLoggedin']),
   },
+  methods:{
+    logout(){
+      console.log("hello")
+      localStorage.clear();
+      window.location.replace("/")
+    }
+  }
 };
 </script>
 <style>
 .nav {
   background-color: darkorchid;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 #brand{
   margin: 0 auto;
@@ -90,8 +108,11 @@ export default {
   background-color: white;
   margin-left: 2pc;
 }
-#avatar{
+.avatar{
     height:40px;
     width:40px
+}
+.dropdown:hover>.dropdown-menu {
+  display: block;
 }
 </style>

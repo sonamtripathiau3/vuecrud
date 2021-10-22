@@ -4,7 +4,6 @@ import store from "./store/index"
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import NProgress from 'nprogress';
-
 import App from './App.vue'
 import AddItem from './components/create.vue';
 import Edit from './components/edit.vue';
@@ -13,7 +12,6 @@ import Index from "./components/index.vue";
 import Users from "./components/users.vue"
 import Login from "./components/login.vue"
 import '../node_modules/nprogress/nprogress.css';
-
 const myapp= createApp(App)
 
 // myapp.use(VueRouter);
@@ -23,8 +21,14 @@ myapp.use(VueAxios, axios);
 myapp.config.productionTip = false
 
 const routes = [
-  { path: '/',   name: 'Index',
-      component:Index
+  { path: '/dashboard',   
+    name: 'Index',
+    component:Index
+   },
+   {
+     path:'/',
+     name:'App',
+     Component:App
    },
    {
     name: 'Login',

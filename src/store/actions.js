@@ -9,3 +9,6 @@ export const loadUsers = async({ commit }, payload) => {
 export const deleteUser=({commit},payload)=>{
     commit("deleteUser", payload)
 }
+export const auth=({commit},payload)=>{
+   commit("auth", payload)
+}
