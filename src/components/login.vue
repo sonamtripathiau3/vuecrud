@@ -29,6 +29,7 @@
 </div>
 </template>
 <script>
+import Swal from "sweetalert2"
 export default {
     name:"Login",
     data() {
@@ -39,38 +40,36 @@ export default {
   },
   methods: {
     async login() {
-      // let uri;
-      // if (process.env.NODE_ENV === "production") {
-      //   uri = "/register";
-      // } else {
-      //   uri = "http://localhost:8000/register";
-      // }
-      console.log(this.data);
-      if(this.newdata.email==localStorage.getItem("email")&& this.newdata.password==localStorage.getItem("password")){
+      let uri;
+      if (process.env.NODE_ENV === "production") {
+        uri = "/login";
+      } else {
+        uri = "http://localhost:8000/login";
+      }
+      console.log(this.newdata);
+       await this.axios.post(uri, this.newdata).then((res) => {
+        console.log(res.data);
+        if(res.data.user.email){
         this.auth=true
-        await this.$store.dispatch('auth',this.auth);
-        this.$router.push({name: "Index"});
+        localStorage.setItem("isLoggedIn", res.data.isLoggedIn)
+        this.$store.dispatch('auth',this.auth);
       }else{
         window.location.replace("/login")
       }
-      //  await this.axios.post(uri, this.data).then((response) => {
-      //   console.log(response.data);
-      //    Swal.fire({
-      //   position: "center",
-      //   icon: "success",
-      //   title: response.data.item,
-      //   showConfirmButton: false,
-      //   timer: 1500,
-      //   });
-      // });
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: res.data.msg,
+        showConfirmButton: false,
+        timer: 1500,
+        });
+      });
+
      
       this.newdata = {};
-      // window.location.replace("/create")
-      // setTimeout(function () {
-      //       console.log('boo')
-            // window.location.replace("/login")
-          // this.$router.push({ name: "App" });
-      //   }, 1000)
+      setTimeout(function () {
+            window.location.replace("/dashboard")
+      }, 1000)
     },
   },
 }

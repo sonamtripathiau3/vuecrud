@@ -11,22 +11,14 @@
       />
     </a>
    <a class="navbar-brand" href="/" id="brand">
-      <h2 style="color: white" v-if="!isLoggedin">Welcome</h2>
+      <h2 style="color: white" v-if="!isLoggedin && !isLoggedIn">Welcome</h2>
     </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto mb-2 mb-lg-0">
-          <span v-if="!isLoggedin">
-          <a class="anchor nav-link"
-          ><Login/></a>
-          </span>
-          <span v-if="!isLoggedin">
-          <a class="anchor nav-link"
-          ><Register/></a>
-          </span>
-          <div  class="row" v-else>
+          <div  class="row" v-if="isLoggedin || isLoggedIn">
           <router-link :to="{ name: 'Index' }" class="anchor nav-link">Home</router-link>
           <router-link :to="{ name: 'Create' }" class="anchor nav-link"
           >Add Item</router-link>
@@ -49,6 +41,16 @@
     </ul>
   </div>
       </div>
+      <div class="row" v-else>
+          <span>
+          <a class="anchor nav-link"
+          ><Login/></a>
+          </span>
+          <span >
+          <a class="anchor nav-link"
+          ><Register/></a>
+          </span>
+      </div>
     </div>
   </div>
 </nav>
@@ -62,6 +64,14 @@ export default {
   components:{
     Login,
     Register
+  },
+  data(){
+    return{
+      isLoggedIn:false
+    }
+  },
+  mounted(){
+    this.isLoggedIn=localStorage.getItem('isLoggedIn')
   },
   computed: {
     ...mapGetters(['isLoggedin']),

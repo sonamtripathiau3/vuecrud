@@ -64,6 +64,6 @@ width: 100%;
 max-height: 50px;
 }
 .footer .full-width{
-background-color: #231f20;
+background-color: #000000;
 }
 </style>

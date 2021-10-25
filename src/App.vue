@@ -3,7 +3,7 @@
     <div>
       <Navbar/>
       </div>
-        <div class="row" v-if="isLoggedin">
+        <div class="row" v-if="isLoggedin || isLoggedIn">
         <Sidebar/>
     <div class="col md-10 container">
       <transition name="fade">
@@ -46,6 +46,14 @@ export default {
     Sidebar,
     Login,
     Register
+  },
+  data(){
+    return {
+      isLoggedIn:false
+    }
+  },
+  mounted(){
+    this.isLoggedIn=localStorage.getItem("isLoggedIn")
   },
     computed: {
     ...mapGetters(['isLoggedin']),

@@ -41,7 +41,7 @@
 </div>
 </template>
 <script>
-// import Swal from "sweetalert2"
+import Swal from "sweetalert2"
 export default {
 name: "Register",
   data() {
@@ -51,33 +51,33 @@ name: "Register",
   },
   methods: {
     async register() {
-      // let uri;
-      // if (process.env.NODE_ENV === "production") {
-      //   uri = "/register";
-      // } else {
-      //   uri = "http://localhost:8000/register";
-      // }
+      let uri;
+      if (process.env.NODE_ENV === "production") {
+        uri = "/register";
+      } else {
+        uri = "http://localhost:8000/register";
+      }
       console.log(this.data);
       localStorage.setItem("email",this.data.email);
       localStorage.setItem("password",this.data.password);
-      //  await this.axios.post(uri, this.data).then((response) => {
-      //   console.log(response.data);
-      //    Swal.fire({
-      //   position: "center",
-      //   icon: "success",
-      //   title: response.data.item,
-      //   showConfirmButton: false,
-      //   timer: 1500,
-      //   });
-      // });
+       await this.axios.post(uri, this.data).then((response) => {
+        console.log(response.data);
+         Swal.fire({
+        position: "center",
+        icon: "success",
+        title: response.data.msg,
+        showConfirmButton: false,
+        timer: 1500,
+        });
+      });
      
       this.data = {};
       // window.location.replace("/create")
-      // setTimeout(function () {
+      setTimeout(function () {
       //       console.log('boo')
             window.location.replace("/login")
           // this.$router.push({ name: "App" });
-      //   }, 1000)
+       }, 1000)
     },
   },
 };
