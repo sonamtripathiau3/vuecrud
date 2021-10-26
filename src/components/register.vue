@@ -60,24 +60,36 @@ name: "Register",
       console.log(this.data);
       localStorage.setItem("email",this.data.email);
       localStorage.setItem("password",this.data.password);
-       await this.axios.post(uri, this.data).then((response) => {
-        console.log(response.data);
-         Swal.fire({
+       await this.axios.post(uri, this.data).then((res) => {
+        console.log(res);
+        Swal.fire({
         position: "center",
         icon: "success",
-        title: response.data.msg,
+        title: res.data.msg,
         showConfirmButton: false,
         timer: 1500,
         });
-      });
-     
+      setTimeout(function () {
+      // //       console.log('boo')
+      window.location.replace("/login")
+      //     // this.$router.push({ name: "App" });
+       }, 1000)
+      }).catch((error)=>{
+        console.log("hello")
+        console.log(error.response)
+        Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: error.response.data.msg,
+        showConfirmButton: false,
+        timer: 1500,
+        });
+      setTimeout(function () {
+       window.location.replace("/login")
+       }, 1000)
+      })
       this.data = {};
       // window.location.replace("/create")
-      setTimeout(function () {
-      //       console.log('boo')
-            window.location.replace("/login")
-          // this.$router.push({ name: "App" });
-       }, 1000)
     },
   },
 };

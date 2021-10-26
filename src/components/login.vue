@@ -47,14 +47,12 @@ export default {
         uri = "http://localhost:8000/login";
       }
       console.log(this.newdata);
-       await this.axios.post(uri, this.newdata).then((res) => {
+       await this.axios.post(uri,this.newdata).then((res) => {
         console.log(res.data);
         if(res.data.user.email){
         this.auth=true
         localStorage.setItem("isLoggedIn", res.data.isLoggedIn)
         this.$store.dispatch('auth',this.auth);
-      }else{
-        window.location.replace("/login")
       }
         Swal.fire({
         position: "center",
@@ -63,13 +61,24 @@ export default {
         showConfirmButton: false,
         timer: 1500,
         });
-      });
-
-     
-      this.newdata = {};
+       setTimeout(function () {
+       window.location.replace("/dashboard")
+       }, 1000)
+      }).catch((error)=>{
+        console.log("hello")
+        console.log(error.response)
+        Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: error.response.data.msg,
+        showConfirmButton: false,
+        timer: 1500,
+        });
       setTimeout(function () {
-            window.location.replace("/dashboard")
-      }, 1000)
+       window.location.replace("/login")
+       }, 1000)
+      })
+      this.newdata = {};
     },
   },
 }

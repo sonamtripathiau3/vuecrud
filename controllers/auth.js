@@ -20,8 +20,7 @@ exports.Signup = async (req, res, next) => {
       .then((user) => {
         console.log("user", user);
         if (user) {
-          return res
-            .status(400)
+          return res.status(400)
             .json({
               error: "USER_EXISTS",
               msg: "User Already Exists!",
