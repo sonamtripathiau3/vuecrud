@@ -12,15 +12,17 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" aria-describedby="emailHelp" v-model="newdata.email">
+    <span id="email" style="color:red"></span>
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" v-model="newdata.password">
+    <span id="password" style="color:red"></span>
   </div>
   <div class="modal-footer">
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  <button type="submit" class="btn btn-primary"  data-dismiss="modal" @click="login()">Submit</button>
+  <button type="submit" class="btn btn-primary"  @click="login()">Submit</button>
   </div>
 </form>
 </div>
@@ -35,11 +37,37 @@ export default {
     data() {
     return {
       newdata: {},
-      auth:false
+      auth:false,
+      isValid:true,
+      active:false
     };
   },
   methods: {
+
+    validation(){
+      if(!this.newdata.email){
+        document.getElementById("email").innerHTML="Please enter email"
+        this.isValid=false
+        this.active=true
+      }else if(!this.validEmail(this.newdata.email)) {
+        document.getElementById("email").innerHTML="Please enter valid email"
+        this.isValid=false
+        this.active=true
+      }
+      if(!this.newdata.password){
+        document.getElementById("password").innerHTML="Please enter password"
+        this.isValid=false
+        this.active=true
+      }
+      
+      return this.isValid
+    },
+    validEmail: function (email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
     async login() {
+      if(this.validation()){
       let uri;
       if (process.env.NODE_ENV === "production") {
         uri = "/login";
@@ -79,7 +107,8 @@ export default {
        }, 1000)
       })
       this.newdata = {};
-    },
+    }
+    }
   },
 }
 </script>
