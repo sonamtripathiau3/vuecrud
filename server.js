@@ -15,8 +15,8 @@ app.use(express.json());
 
 app.use(
   cors({
-    // origin: "https://e-crud-vue.herokuapp.com",
-    origin: "http://localhost:8080", // allow to server to accept request from different origin
+    origin: "https://e-crud-vue.herokuapp.com",
+    // origin: "http://localhost:8080", // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // allow session cookie from browser to pass through
   })
