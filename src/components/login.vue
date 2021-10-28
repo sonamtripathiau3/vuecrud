@@ -8,7 +8,7 @@
   <div class="modal-content">
   <div class="modal-body login">
       <h6 class="text-center"><strong>Login</strong></h6>
-  <form>
+  <form v-on:submit.prevent="login">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" aria-describedby="emailHelp" v-model="newdata.email">
@@ -22,7 +22,7 @@
   </div>
   <div class="modal-footer">
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  <button type="submit" class="btn btn-primary"  @click="login()">Submit</button>
+  <button type="submit" class="btn btn-primary" >Submit</button>
   </div>
 </form>
 </div>
@@ -38,36 +38,36 @@ export default {
     return {
       newdata: {},
       auth:false,
-      isValid:true,
-      active:false
+      valid:true,
+      // active:false
     };
   },
   methods: {
 
-    validation(){
+    formvalidation(){
       if(!this.newdata.email){
         document.getElementById("email").innerHTML="Please enter email"
-        this.isValid=false
-        this.active=true
-      }else if(!this.validEmail(this.newdata.email)) {
+        this.valid=false
+        // this.active=true
+      }else if(!this.validemail(this.newdata.email)) {
         document.getElementById("email").innerHTML="Please enter valid email"
-        this.isValid=false
-        this.active=true
+        this.valid=false
+        // this.active=true
       }
       if(!this.newdata.password){
         document.getElementById("password").innerHTML="Please enter password"
-        this.isValid=false
-        this.active=true
+        this.valid=false
+        // this.active=true
       }
       
-      return this.isValid
+      return this.valid
     },
-    validEmail: function (email) {
+    validemail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
     async login() {
-      if(this.validation()){
+      if(this.formvalidation()){
       let uri;
       if (process.env.NODE_ENV === "production") {
         uri = "/login";
@@ -76,6 +76,7 @@ export default {
       }
       console.log(this.newdata);
        await this.axios.post(uri,this.newdata).then((res) => {
+         console.log("hello")
         console.log(res.data);
         if(res.data.user.email){
         this.auth=true
@@ -90,6 +91,7 @@ export default {
         timer: 1500,
         });
        setTimeout(function () {
+         console.log("hello")
        window.location.replace("/dashboard")
        }, 1000)
       }).catch((error)=>{
@@ -103,10 +105,10 @@ export default {
         timer: 1500,
         });
       setTimeout(function () {
-       window.location.replace("/login")
+      //  window.location.replace("/login")
        }, 1000)
       })
-      this.newdata = {};
+      // this.newdata = {};
     }
     }
   },

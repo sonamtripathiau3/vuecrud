@@ -75,7 +75,7 @@ exports.Signin = async (req, res, next) => {
   if (re.test(email)) {
     user = await User.findOne({ email});
   }
-
+  console.log("login user", user)
   if (!user) {
     return res
       .status(401)
